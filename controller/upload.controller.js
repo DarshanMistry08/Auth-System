@@ -11,7 +11,4 @@ function handleFileUpload(req, res) {
     return res.send("File Uploaded Successfully ✅");
 }
 
-module.exports = {
-    handleUploadPage,
-    handleFileUpload
-};
+module.exports = { handleUploadPage,handleFileUpload };

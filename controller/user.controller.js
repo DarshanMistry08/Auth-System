@@ -4,7 +4,7 @@ const User = require('../model/users.js');
 
 function showCreatePage(req, res) {
     res.render('index');
-}
+};
 
 async function createUsers(req, res) {
     try {
@@ -23,7 +23,6 @@ async function createUsers(req, res) {
     } catch (err) {
         console.log(err); 
         res.status(500).send("Error");
-    }
-}
-
+    };
+};
 module.exports = { createUsers, showCreatePage }

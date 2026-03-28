@@ -6,7 +6,7 @@ async function connectDB() {
         console.log("MongoDB Connected ✅");
     } catch (err) {
         console.log("DB Error ❌", err);
-    }
-}
+    };
+};
 
 module.exports = connectDB;

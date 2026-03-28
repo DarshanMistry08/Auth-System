@@ -17,7 +17,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 app.use(cookieparser());
 
-
 const upload = require('./config/multer');
 const uploadRoutes = require('./routes/upload.routes');
 
@@ -28,7 +27,6 @@ app.use('/', userRoutes);
 
 
 app.get('/users', async (req, res) => {
-
     let users = await User.find({});
     res.send(users);
 });
