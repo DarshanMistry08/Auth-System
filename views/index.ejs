@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form </title>
+   <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+<body>
+<div style="padding: 10px;" class="container">
+
+    <form action="/create" method="POST">
+        <h2> Create User </h2>
+        <label >username:</label>
+        <input type="text" name="username" placeholder="username" required>
+        
+        <label>Email:</label>
+        <input  type="email" name="email" placeholder="email" required>
+        
+        <label>Age:</label>
+        <input type="number" name="age" placeholder="age" required>
+        
+        <label>password:</label>
+        <input type="password" name="password" placeholder="passwords">
+
+        <button style="background-color: blue; outline: none; " type="submit" value="create user">Submit</button>
+        
+    </form>
+</div>
+
+    <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener("click",()=>{
+            alert("form submitted");
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form </title>
+        <link rel="stylesheet" href="/stylesheets/test.css">
+
+</head>
+
+<body>
+<div style="padding: 10px;" class="container">
+
+    <form action="/file/upload" method="POST" enctype="multipart/form-data" >
+        <h2> upload User File </h2>
+        <input type="file" name="image"  >
+
+        <button style="background-color: blue; outline: none; " type="submit" value="upload file">upload file</button>
+        
+    </form>
+</div>
+
+    <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener("click",()=>{
+            alert("form submitted");
+        })
+    </script>
+</body>
+</html>
