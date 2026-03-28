@@ -3,21 +3,12 @@ const app = express();
 const path = require('path');
 const cookieparser = require('cookie-parser');
 require('dotenv').config();
-// const mongoose = require('mongoose');
-// const UserModel = require('./model/users');
 const User = require('./model/users');
-const bcrypt = require('bcrypt');
-const ejs = require('ejs');
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-// const multer = require("./config/multer");
-// const {checkAuth} = require('./middleware/auth.middleware');
+const {checkAuth} = require('./middleware/auth.middleware');
 const connectDB = require('./config/db');
 connectDB();
-// const dotenv = require('dotenv');
 const userRoutes = require('./routes/user.routes');
 const LoginRoutes = require('./routes/login.routes');
-
 
 app.set('view engine', 'ejs');
 app.use(express.json());
