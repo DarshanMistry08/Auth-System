@@ -5,4 +5,9 @@ const {showForgetPassowrdPage,handleForgetPassword} = require("../controller/For
 router.get('/',showForgetPassowrdPage);
 router.post('/',handleForgetPassword);
 
+router.get('/reset-password', (req, res) => {
+    const { token } = req.query;
+    res.render('ResetPassPage', { token });
+});
+
 module.exports = router;

@@ -29,7 +29,7 @@ app.use('/', userRoutes);
 app.use('/contact', contactUsRoutes);
 
 app.use('/forgot-password', forgotPasswordRoutes);
-
+app.use('/', forgotPasswordRoutes);
 
 app.get('/users',checkAuth, async (req, res) => {
     let users = await User.find({});
@@ -40,7 +40,6 @@ app.post('/logout', (req, res) => {   //CHANGR post to get
     res.cookie('token', "")
     res.redirect('/login');
 });
-
 app.listen(process.env.PORT, () => {
     console.log(`Server running on port ${process.env.PORT}`);
 });

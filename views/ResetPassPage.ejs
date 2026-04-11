@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reset Password</title>
+  <link rel="stylesheet" href="/stylesheets/ResetPassPage.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+
+      <h2>Reset Password 🔐</h2>
+      <p class="subtitle">Enter your new password below</p>
+
+      <form action="/reset-password?token=<%= token %>" method="POST">
+        
+        <div class="input-group">
+          <label>New Password</label>
+          <input type="password" name="password" placeholder="Enter new password" required>
+        </div>
+
+        <div class="input-group">
+          <label>Confirm Password</label>
+          <input type="password" name="confirmPassword" placeholder="Confirm password" required>
+        </div>
+
+        <button type="submit">Update Password</button>
+      </form>
+
+      <div class="footer">
+        <a href="/login">Back to Login</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
