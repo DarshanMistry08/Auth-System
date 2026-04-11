@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { createUsers ,showCreatePage } = require('../controller/user.controller');
 router.get('/create', showCreatePage);
-router.post('/create', createUsers);     //rempove create from both
+router.post('/create', createUsers);     
 
 
 module.exports = router;
