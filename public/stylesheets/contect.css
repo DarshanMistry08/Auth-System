@@ -1,0 +1,13 @@
+/* Logo styling */
+.logo {
+  height: 60px;
+  object-fit: contain;
+  border-radius: 40px;
+mix-blend-mode: lighten;
+color: invert(100%);
+}
+
+.right button{
+    margin: 0px 15px;
+
+}

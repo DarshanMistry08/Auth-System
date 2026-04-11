@@ -12,8 +12,46 @@ body {
     align-items: center;
     background: linear-gradient(135deg, #4facfe, #00f2fe);
 }
+/* Reset default margin */
+body {
+  margin: 0;
+}
+
+/* Navbar styling */
+.navbar {
+  position: fixed;      /* stick to top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 35px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  background-color: #111;   /* dark background */
+  box-shadow: 0 2px 10px rgb(0, 0, 0);
+border-radius: 10px;
+  z-index: 1000;  /* stay above everything */
+}
+
+/* Logo styling */
+.logo {
+  height: 60px;
+  object-fit: contain;
+  border-radius: 40px;
+mix-blend-mode: lighten;
+color: invert(100%);
+}
+
+.right button{
+    margin: 0px 15px;
+
+}
 
 form {
+    padding-top: 70px;
     width: 350px;
     padding: 30px;
     border-radius: 15px;
@@ -72,4 +110,78 @@ form button:hover {
     background: #000;
     color: #fff;
     transform: scale(1.05);
+}
+button{
+        width: fit-content;
+    padding: 0px 10px;
+    border: none;
+    border-radius: 10px;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: black;
+}
+
+.continue {
+  text-align: center;
+  margin: 20px 0;
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* Row layout */
+.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Rounded buttons */
+.social-btn {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;   /* 🔥 perfect circle */
+  background: #1a1a1a;
+  border: 1px solid #333;
+
+  transition: 0.3s;
+}
+
+/* Hover effect */
+.social-btn:hover {
+  transform: translateY(-3px);
+  background: #2a2a2a;
+}
+
+/* Logo inside */
+.social-btn img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+.social-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #1a1a1a;
+  border: 1px solid #333;
+
+  overflow: hidden;  /* important */
+}
+
+.social-btn img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
 }
