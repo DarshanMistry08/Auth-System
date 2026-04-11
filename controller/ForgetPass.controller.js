@@ -12,7 +12,7 @@ async function handleForgetPassword(req, res) {
         if (!user) {
             return res.render("forgot-password", { error: "User not found" });
         } else {
-            return res.render("forgot-password", { error: "Server error" });
+            return res.render("forgot-password", { error  : "Password reset link sent to your email " });
         }
     } catch (err) {
         console.log(err.message);
