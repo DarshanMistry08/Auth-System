@@ -10,7 +10,7 @@ connectDB();
 const userRoutes = require('./routes/user.routes');
 const LoginRoutes = require('./routes/login.routes');
 const forgotPasswordRoutes = require('./routes/forgot-password.routes');
-const contectUsRoutes = require('./routes/contectUs.routes');
+const contactUsRoutes = require('./routes/contactUs.routes');
 
 app.set('view engine', 'ejs');
 app.use(express.json());
@@ -26,7 +26,7 @@ app.use('/file', uploadRoutes);
 
 app.use('/login', LoginRoutes);    
 app.use('/', userRoutes);
-app.use('/contact', contectUsRoutes);
+app.use('/contact', contactUsRoutes);
 
 app.use('/forgot-password', forgotPasswordRoutes);
 
@@ -36,7 +36,7 @@ app.get('/users',checkAuth, async (req, res) => {
     res.send(users);
 });
 
-app.post('/logout', (req, res) => {
+app.post('/logout', (req, res) => {   //CHANGR post to get
     res.cookie('token', "")
     res.redirect('/login');
 });
