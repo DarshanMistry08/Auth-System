@@ -9,6 +9,8 @@ const connectDB = require('./config/db');
 connectDB();
 const userRoutes = require('./routes/user.routes');
 const LoginRoutes = require('./routes/login.routes');
+const forgotPasswordRoutes = require('./routes/forgot-password.routes');
+const contectUsRoutes = require('./routes/contectUs.routes');
 
 app.set('view engine', 'ejs');
 app.use(express.json());
@@ -22,18 +24,21 @@ const uploadRoutes = require('./routes/upload.routes');
 
 app.use('/file', uploadRoutes);
 
-app.use('/user', LoginRoutes);
+app.use('/login', LoginRoutes);    
 app.use('/', userRoutes);
+app.use('/contact', contectUsRoutes);
+
+app.use('/forgot-password', forgotPasswordRoutes);
 
 
-app.get('/users', async (req, res) => {
+app.get('/users',checkAuth, async (req, res) => {
     let users = await User.find({});
     res.send(users);
 });
 
-app.get('/logout', (req, res) => {
+app.post('/logout', (req, res) => {
     res.cookie('token', "")
-    res.redirect('/');
+    res.redirect('/login');
 });
 
 app.listen(process.env.PORT, () => {
