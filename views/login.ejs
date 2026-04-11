@@ -11,6 +11,11 @@
   <img src="/images/logo.png" alt="logo" class="logo">
 </nav>
 <div style="padding: 10px;" class="container">
+<% if (typeof error !== 'undefined') { %>
+    <div class="error-box">
+        <%= error %>
+    </div>
+<% } %>
 
     <form action="/login/user" method="POST">
         <h2> Login Page </h2>
@@ -25,11 +30,6 @@
     </form>
 </div>
 
-    <!-- <script>
-        const btn = document.getElementById('btn');
-        btn.addEventListener("click",()=>{
-            alert("form submitted");
-        })
-    </script> -->
+    
 </body>
 </html>
