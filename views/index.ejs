@@ -7,10 +7,19 @@
    <link rel="stylesheet" href="/stylesheets/index.css">
 </head>
 <body>
+<nav class="navbar">
+  <img src="/images/logo.png" alt="logo" class="logo">
+  <div class="right">
+    
+  <button><a style="text-decoration: none;" href="/login">Login</a></button>
+  <button><a style="text-decoration: none;" href="/contact">Contact Us</a></button>
+  </div>
+</nav>
 <div style="padding: 10px;" class="container">
-
     <form action="/create" method="POST">
-        <h2> Create User </h2>
+       <h2 style="font-size: 25px;">
+  Create User
+</h2>
         <label >username:</label>
         <input type="text" name="username" placeholder="username" required>
         
@@ -24,6 +33,28 @@
         <input type="password" name="password" placeholder="passwords">
 
         <button style="background-color: blue; outline: none; " type="submit" value="create user">Submit</button>
+        
+<div class="continue">
+  <p>Or continue with</p>
+</div>
+
+<div class="social-row">
+  <a href="#" class="social-btn">
+    <img src="/images/google.png"alt="Google">
+  </a>
+
+  <a href="#" class="social-btn">
+    <img src="/images/facebook.png" alt="Facebook">
+  </a>
+
+  <a href="#" class="social-btn">
+    <img src="/images/github.png" alt="GitHub">
+  </a>
+
+  <a href="#" class="social-btn">
+    <img src="/images/job.png" alt="LinkedIn">
+  </a>
+</div>
         
     </form>
 </div>
