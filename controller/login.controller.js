@@ -33,7 +33,8 @@ async function LoginUser(req, res) {
             process.env.JWT_SECRET
         );
         res.cookie("token", token);
-        return res.redirect('/users');  
+        // return res.redirect('/users');  
+        return res.render("logout");
 
     } catch (err) {
         console.log("ERROR:", err.message);
