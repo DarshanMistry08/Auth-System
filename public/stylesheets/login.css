@@ -99,3 +99,33 @@ form button:hover {
     color: #fff;
     transform: scale(1.05);
 }
+.error-box {
+    background: #ffe0e0;
+    color: #d8000c;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.login-container {
+    width: 350px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.forgot {
+    margin-top: 15px;
+    font-size: 14px;
+}
