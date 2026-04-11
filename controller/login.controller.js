@@ -8,7 +8,7 @@ function showLoginPage(req, res) {
 }
 //  login
 async function LoginUser(req, res) {
-    console.log("LOGIN HIT"); 
+    // console.log("LOGIN HIT"); 
     try {
         const { email, password } = req.body;
 
