@@ -9,5 +9,6 @@ router.get('/reset-password', (req, res) => {
     const { token } = req.query;
     res.render('ResetPassPage', { token });
 });
+// router.post('/reset-password');
 
 module.exports = router;

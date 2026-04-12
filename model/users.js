@@ -18,6 +18,8 @@ password:{
     required:true,
     unique:true 
 },
+resetToken: String,      //Add for Reset part only
+resetTokenExpires: Date,
 
 }, { timestamps: true });
 
