@@ -7,10 +7,10 @@ async function showForgetPassowrdPage(req, res) {
     res.render('forgot-password');
 }
 const transpoter = nodemailer.createTransport({
-    service:"gmail",
-    auth:{
-        user:"mistryydarshan08@gmail.com",
-        pass:process.env.EMAIL_PASSWORD
+    service: "gmail",
+    auth: {
+        user: "mistryydarshan08@gmail.com",
+        pass: process.env.EMAIL_PASSWORD
     }
 })
 async function handleForgetPassword(req, res) {
@@ -34,20 +34,20 @@ async function handleForgetPassword(req, res) {
         console.log("Password reset link:", ResetLink);
 
         // send mail
-// const mailOptions ={
-//     from:"mistryydarshan08@gmail.com",
-//     to:user.email,
-//     subject:"Password Reset Request",
-//     text: `You requested a password reset. Click the link to reset your password: ${ResetLink}`
-// };
+        // const mailOptions ={
+        //     from:"mistryydarshan08@gmail.com",
+        //     to:user.email,
+        //     subject:"Password Reset Request",
+        //     text: `You requested a password reset. Click the link to reset your password: ${ResetLink}`
+        // };
 
 
-const resetLink = `http://localhost:3000/reset-password/${token}`;
+        const resetLink = `http://localhost:3000/reset-password/${token}`;
 
-await transpoter.sendMail({
-  to: user.email,
-  subject: "Reset Password",
-  html: `
+        await transpoter.sendMail({
+            to: user.email,
+            subject: "Reset Password",
+            html: `
   <!DOCTYPE html>
   <html>
   <body style="margin:0;padding:0;background:#f2f2f2;font-family:Arial, sans-serif;">
@@ -80,17 +80,17 @@ await transpoter.sendMail({
   </body>
   </html>
   `
-});
+        });
 
-    transpoter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log(error);
-            return res.send("❌ Email failed to send");
-        } else {
-            console.log("Email sent:", info.response);
-            return res.send("✅ Email sent successfully");
-        }
-    });
+        transpoter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+                return res.send("❌ Email failed to send");
+            } else {
+                console.log("Email sent:", info.response);
+                return res.send("✅ Email sent successfully");
+            }
+        });
 
         return res.render("forgot-password", { error: "Password reset link sent to your email " });
 
@@ -101,4 +101,22 @@ await transpoter.sendMail({
     }
 }
 
-module.exports = { showForgetPassowrdPage, handleForgetPassword };
+
+
+
+
+
+//HEre handle protected route of rese-password 
+async function ProtectReserRoute(req, res) {
+    const user = await User.findOne({
+        resetToken: req.params.token,
+        resetTokenExpires: { $gt: Date.now() }
+    })
+    if (!user) {
+        return res.send("invalid or Expired Token,.. please try again")
+    }
+    res.render('ResetPassPage', { resetToken })
+};
+
+
+module.exports = { showForgetPassowrdPage, handleForgetPassword, ProtectReserRoute };
