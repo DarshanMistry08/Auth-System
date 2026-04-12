@@ -1,57 +1,3 @@
-// const express = require('express');
-// const nodemailer = require('nodemailer');
-
-// const router = express.Router();
-// router.get('/', (req, res) => {
-//     res.render('contactUs');
-// });
-// // transporter
-// const transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//         user: "mistryydarshan08@gmail.com",
-//         pass: "process.env.EMAIL_PASSWORD"
-//     }
-// });
-
-// // route
-// router.post('/contact', (req, res) => {
-
-//     const mailOptions = {
-//         from: "mistryydarshan08@gmail.com",
-//         to: "mistryydarshan08@gmail.com",
-//         replyTo: req.body.email,
-
-//         subject: `New Message: ${req.body.subject}`,
-
-//         text: `
-//         Name: ${req.body.name}
-//         Email: ${req.body.email}
-//         Phone: ${req.body.phone || "Not provided"}
-//         Type: ${req.body.type}
-
-//         Message:
-//         ${req.body.message}
-//         `
-//     };
-
-//     transporter.sendMail(mailOptions, (error, info) => {
-//         if (error) {
-//             console.log(error);
-//             return res.send("Email send failed ❌");
-//         } else {
-//             return res.send("Email sent successfully ✅");
-//         }
-//     });
-
-// });
-
-// module.exports = router;
-
-
-
-
-
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 
@@ -105,10 +51,3 @@ ${message}
     });
 };
 
-// exports.sendMessage = (req, res) => {
-//     console.log("POST route hit ✅");  // 👈 add this
-
-//     res.send("working");
-// };
-
-// module.exports = router;

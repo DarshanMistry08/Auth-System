@@ -13,8 +13,8 @@
       <h2>Reset Password 🔐</h2>
       <p class="subtitle">Enter your new password below</p>
 
-      <form action="/reset-password?token=<%= token %>" method="POST">
-        
+      <!-- <form action="/reset-password?token=<%= token %>" method="POST"> -->
+        <form action="/reset-password/<%= token %>" method="POST">
         <div class="input-group">
           <label>New Password</label>
           <input type="password" name="password" placeholder="Enter new password" required>

@@ -1,5 +1,6 @@
 const User = require('../model/users');
 const crypto = require("crypto");
+const bcrypt = require("bcrypt");
 const nodemailer = require('nodemailer');
 
 
@@ -25,9 +26,13 @@ async function handleForgetPassword(req, res) {
             return res.render("forgot-password", { error: "User not found" });
         }
 
+        //Random String token Generate 
         const token = crypto.randomBytes(16).toString("hex");
-        user.resetToken = token;
-        user.resetTokenExpires = Date.now() + 15 * 60 * 1000;
+        const hashedToken = crypto.createHash("sha256").update(token).digest("hex");  //add hash validation 
+        user.resetToken = hashedToken;
+        // console.log("token",token)
+        // console.log("hashedToken",hashedToken)
+        user.resetTokenExpires = Date.now() + 200 * 60 * 1000;    //add 15 later
         await user.save();
 
         const ResetLink = `http://localhost:${process.env.PORT}/reset-password?token=${token}`;
@@ -103,20 +108,82 @@ async function handleForgetPassword(req, res) {
 
 
 
-
-
-
-//HEre handle protected route of rese-password 
+//Here handle protected route of reset-password 
+// async function ProtectReserRoute(req, res) {
+//     const user = await User.findOne({
+//         resetToken: req.params.token,
+//         resetTokenExpires: { $gt: Date.now() }
+//     });
+//     if (!user) {
+//         return res.send("invalid or Expired Token,.. please try again")
+//     }
+//     res.render('ResetPassPage', { resetToken })
+// };
 async function ProtectReserRoute(req, res) {
+console.log("RAW TOKEN:", req.params.token);
+
+const hashedToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
+
+console.log("HASHED TOKEN:", hashedToken);      //1
+
     const user = await User.findOne({
-        resetToken: req.params.token,
+        resetToken: hashedToken,
         resetTokenExpires: { $gt: Date.now() }
-    })
+    });
+    // console.log("TOKEN:", req.params.token);
+
     if (!user) {
-        return res.send("invalid or Expired Token,.. please try again")
+        return res.send("Invalid or expired token, please try again");
     }
-    res.render('ResetPassPage', { resetToken })
-};
+
+    res.render('ResetPassPage', { token: req.params.token });
+}
 
 
-module.exports = { showForgetPassowrdPage, handleForgetPassword, ProtectReserRoute };
+
+
+// Here Check about after entered user validation
+async function CheckPostRoute(req, res) {
+    const token = req.params.token;
+    console.log("post route token", token);
+    const hashedToken = crypto.createHash('sha256').update(token).digest("hex");
+
+    const user = await User.findOne({
+        resetToken: hashedToken,
+        resetTokenExpires: { $gt: Date.now() }
+
+        
+    });
+    console.log("HASHED TOKEN:", hashedToken);           //2
+
+    if (!user) {
+        return res.send("Invalid or expired token")
+    }
+    const { password, confirmPassword } = req.body;
+    if (!password || !confirmPassword) {
+        res.send("Empty filed is not valid please enter password")
+    }
+    if (password !== confirmPassword) {
+        res.send("Both field's password not match try again,...!")
+    }
+    if (password.length < 6) {
+        res.send("Enter Strong password")
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    user.password = hashedPassword;
+    user.resetToken = undefined;
+    user.resetTokenExpires = undefined;
+    console.log(user);
+    await user.save();
+
+    res.send("Password reset successful");
+}
+
+
+
+
+module.exports = { showForgetPassowrdPage, handleForgetPassword, ProtectReserRoute, CheckPostRoute };

@@ -30,6 +30,7 @@ app.use('/contact', contactUsRoutes);
 
 app.use('/forgot-password', forgotPasswordRoutes);
 app.use('/', forgotPasswordRoutes);
+app.use('/reset-password', forgotPasswordRoutes);  //new
 
 app.get('/users',checkAuth, async (req, res) => {
     let users = await User.find({});
