@@ -32,7 +32,10 @@ body {
 .logo:hover {
   transform: scale(1.1);
 }
-
+.left{
+  display: flex;
+  align-items: center;
+}
 
 .right button {
   margin-left: 10px;
