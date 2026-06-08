@@ -1,69 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>form </title>
-   <link rel="stylesheet" href="/stylesheets/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>form </title>
+  <link id="themeStylesheet" rel="stylesheet" href="/stylesheets/index.css">
 </head>
+
 <body>
-<nav class="navbar">
-  <img src="/images/logo.png" alt="logo" class="logo">
-  <div class="right">
-    
-  <button><a style="text-decoration: none;" href="/login">Login</a></button>
-  <button><a style="text-decoration: none;" href="/contact">Contact Us</a></button>
-  </div>
-</nav>
-<div style="padding: 10px;" class="container">
-    <form action="/create" method="POST">
-       <h2 style="font-size: 25px;">
-  Create User
-</h2>
-        <label >username:</label>
-        <input type="text" name="username" placeholder="username" required>
-        
-        <label>Email:</label>
-        <input  type="email" name="email" placeholder="email" required>
-        
-        <label>Age:</label>
-        <input type="number" name="age" placeholder="age" required>
-        
-        <label>password:</label>
-        <input type="password" name="password" placeholder="passwords">
+  <nav class="navbar">
+    <img src="/images/logo.png" alt="logo" class="logo">
+    <div class="right">
 
-        <button style="background-color: blue; outline: none; " type="submit" value="create user">Submit</button>
-        
-<div class="continue">
-  <p>Or continue with</p>
-</div>
+      <button><a style="text-decoration: none;" href="/login">Login</a></button>
+      <button><a style="text-decoration: none;" href="/contact">Contact Us</a></button>
+    </div>
+  </nav>
+  <div style="padding: 10px;" class="container">
+    <form action="/" method="POST">
+      <h2 style="font-size: 25px;">
+        Create User
+      </h2>
+      <label>username:</label>
+      <input type="text" name="username" placeholder="username" required>
 
-<div class="social-row">
-  <a href="#" class="social-btn">
-    <img src="/images/google.png"alt="Google">
-  </a>
+      <label>Email:</label>
+      <input type="email" name="email" placeholder="email" required>
 
-  <a href="#" class="social-btn">
-    <img src="/images/facebook.png" alt="Facebook">
-  </a>
+      <label>Age:</label>
+      <input type="number" name="age" placeholder="age" required>
 
-  <a href="#" class="social-btn">
-    <img src="/images/github.png" alt="GitHub">
-  </a>
+      <label>password:</label>
+      <input type="password" name="password" placeholder="passwords">
 
-  <a href="#" class="social-btn">
-    <img src="/images/job.png" alt="LinkedIn">
-  </a>
-</div>
-        
+      <button style="background-color: blue; outline: none; " type="submit" value="create user">Submit</button>
+
+      <div class="continue">
+        <p>Or continue with</p>
+      </div>
+
+      <div class="social-row">
+        <a href="#" class="social-btn">
+          <img src="/images/google.png" alt="Google">
+        </a>
+
+        <a href="#" class="social-btn">
+          <img src="/images/facebook.png" class="facebook" alt="Facebook">
+        </a>
+
+        <a href="#" class="social-btn">
+          <img src="/images/github.png" alt="GitHub">
+        </a>
+
+        <a href="#" class="social-btn">
+          <img src="/images/job.png" alt="LinkedIn">
+        </a>
+      </div>
+
     </form>
-</div>
+  </div>
 
-    <script>
-        const btn = document.getElementById('btn');
-        btn.addEventListener("click",()=>{
-            alert("form submitted");
-        })
-    </script>
+  <script src="/javascripts/Theme.js"></script>
 </body>
+
 </html>

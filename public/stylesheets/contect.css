@@ -1,13 +1,117 @@
-/* Logo styling */
-.logo {
-  height: 60px;
-  object-fit: contain;
-  border-radius: 40px;
-mix-blend-mode: lighten;
-color: invert(100%);
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.right button{
-    margin: 0px 15px;
+/* BODY */
+body {
+    background: linear-gradient(135deg, #4d5505, #0b632d);
+  min-height: 100vh;
+}
 
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background-color: #111;   /* dark background */
+  box-shadow: 0 2px 10px rgb(0, 0, 0);
+  z-index: 1000;   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+nav a {
+    background: #4a90e2;
+    margin: 5px ;
+    padding: 6px 19px ;
+    text-decoration: none;
+    color: #d8d8d8;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+.logo {
+  width: 120px;
+/* filter: invert(1); */
+border-radius: 50px;}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+/* ================= FORM ================= */
+form {
+    background: linear-gradient(135deg, #08364b, #000000);
+  max-width: 500px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADING */
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* LABELS */
+form label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: 900;
+  color: #16b1b1b6;
+}
+
+/* INPUTS + SELECT + TEXTAREA */
+form input,
+form select,
+form textarea {
+  padding: 11px 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
+  transition: 0.25s;
+    background: linear-gradient(135deg, #08364b, #000000);
+
+}
+
+/* TEXTAREA HEIGHT */
+form textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+/* FOCUS EFFECT */
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 6px rgba(74,144,226,0.3);
+}
+
+/* BUTTON */
+form button {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(74,144,226,0.3);
 }

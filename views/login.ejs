@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login Page </title>
     <link rel="stylesheet" href="/stylesheets/login.css">
 </head>
+
 <body>
     <nav class="navbar">
-  <img src="/images/logo.png" alt="logo" class="logo">
+        <img src="/images/logo.png" alt="logo" class="logo">
+        <div class="btn">
+            <a href="http://localhost:4000/">Create</a>
+            <a href="http://localhost:4000/contact">Contact Us</a>
+        </div>
+    </nav>
+    <div style="padding: 10px;" class="container">
 
-</nav>
-<div style="padding: 10px;" class="container">
 
+        <form action="/login/user" method="POST">
+            <h2> Login Page </h2>
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="email" required>
 
-    <form action="/login/user" method="POST">
-        <h2> Login Page </h2>
-        <label>Email:</label>
-        <input  type="email" name="email" placeholder="email" required>
-        
-        <label>password:</label>
-        <input type="password" name="password" placeholder="passwords">
+            <label>password:</label>
+            <input type="password" name="password" placeholder="passwords">
 
-        <button style="background-color: blue; outline: none; " type="submit" value="login your account">login </button>
-        <% if (typeof error !== 'undefined') { %>
-    <div class="error-box">
-        <%= error %>
+            <button style="background-color: blue; outline: none; " type="submit" value="login your account">login
+            </button>
+            <% if (typeof error !=='undefined' ) { %>
+                <div class="error-box">
+                    <%= error %>
+                </div>
+                <% } %>
+                    <h3 style="padding-top: 20px; font-size: 14px;">Forgot Your Password? <a
+                            href="/forgot-password">Click here</a></h3>
+        </form>
     </div>
-<% } %>
-        <h3 style="padding-top: 20px; font-size: 14px;">Forgot Your Password? <a href="/forgot-password">Click here</a></h3>
-    </form>
-</div>
 
-    
+
 </body>
+
 </html>

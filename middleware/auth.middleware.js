@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+// app.use(require("cookie-parser")());
 
 function checkAuth(req, res, next) {
     try {

@@ -21,25 +21,30 @@ app.use(cookieparser());
 
 const upload = require('./config/multer');
 const uploadRoutes = require('./routes/upload.routes');
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store');
+    next();
+});  //This ensures: Even if user goes back, request hits server → server says ❌ not allowed → redirect to login.
 
-app.use('/file', uploadRoutes);
+app.use('/file', checkAuth, uploadRoutes);
 
 app.use('/login', LoginRoutes);    
 app.use('/', userRoutes);
 app.use('/contact', contactUsRoutes);
 
 app.use('/forgot-password', forgotPasswordRoutes);
-app.use('/', forgotPasswordRoutes);
 app.use('/reset-password', forgotPasswordRoutes);  //new
+app.use('/', forgotPasswordRoutes);
 
 app.get('/users',checkAuth, async (req, res) => {
     let users = await User.find({});
     res.send(users);
 });
 
-app.post('/logout', (req, res) => {   //CHANGR post to get
+app.post('/logout/user', (req, res) => {   //CHANGR post to get
     res.cookie('token', "")
     res.redirect('/login');
+    res.send("logout hit")
 });
 app.listen(process.env.PORT, () => {
     console.log(`Server running on port ${process.env.PORT}`);

@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>logined Page</title>
-    
+
 </head>
 <style>
+    body,html{
+                background-color: black;
+
+    }
     button {
-    background-color: blue;
-    color: white;
-    padding: 10px;
-    border: none;
-    width: fit-content;
-    border-radius: 5px;
-    cursor: pointer;
-}
+        background-color: blue;
+        color: white;
+        padding: 10px;
+        border: none;
+        width: fit-content;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #btn{
+        display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+    h2{
+        display: flex;
+        color: white;
+        align-items: center;
+        justify-content: space-around;
+    }
 </style>
+
 <body>
-<form action="/logout" method="post">
-    <div style="display: flex; align-items: center; justify-content: space-around;; padding: 20px;">
-        
-    <h2>Welcome to the logined page</h2>
-    <button type="submit">Logout</button>
-    </div>
-</form>
+    <form action="/logout/user" method="post">
+        <div style=" padding: 20px;">
+            <div id="btn"class="button display: flex; align-items: center; justify-content: space-around; ">
+                <button> <a style="text-decoration: none; color: yellow;" href="http:/file/upload">Upload Document</a>
+                    <button type="submit">Logout</button>
+            </div>
+
+            <h2>Welcome to the logined page</h2>
+            
+        </div>
+
+
+    </form>
 </body>
+
 </html>

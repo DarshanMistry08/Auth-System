@@ -47,7 +47,7 @@ async function handleForgetPassword(req, res) {
         // };
 
 
-        const resetLink = `http://localhost:3000/reset-password/${token}`;
+        const resetLink = `http://localhost:4000/reset-password/${token}`;
 
         await transpoter.sendMail({
             to: user.email,
@@ -108,26 +108,16 @@ async function handleForgetPassword(req, res) {
 
 
 
-//Here handle protected route of reset-password 
-// async function ProtectReserRoute(req, res) {
-//     const user = await User.findOne({
-//         resetToken: req.params.token,
-//         resetTokenExpires: { $gt: Date.now() }
-//     });
-//     if (!user) {
-//         return res.send("invalid or Expired Token,.. please try again")
-//     }
-//     res.render('ResetPassPage', { resetToken })
-// };
+
 async function ProtectReserRoute(req, res) {
-console.log("RAW TOKEN:", req.params.token);
+// console.log("RAW TOKEN:", req.params.token);
 
 const hashedToken = crypto
     .createHash("sha256")
     .update(req.params.token)
     .digest("hex");
 
-console.log("HASHED TOKEN:", hashedToken);      //1
+// console.log("HASHED TOKEN:", hashedToken);      //1
 
     const user = await User.findOne({
         resetToken: hashedToken,
@@ -148,7 +138,7 @@ console.log("HASHED TOKEN:", hashedToken);      //1
 // Here Check about after entered user validation
 async function CheckPostRoute(req, res) {
     const token = req.params.token;
-    console.log("post route token", token);
+    // console.log("post route token", token);
     const hashedToken = crypto.createHash('sha256').update(token).digest("hex");
 
     const user = await User.findOne({
@@ -157,7 +147,7 @@ async function CheckPostRoute(req, res) {
 
         
     });
-    console.log("HASHED TOKEN:", hashedToken);           //2
+    // console.log("HASHED TOKEN:", hashedToken);           //2
 
     if (!user) {
         return res.send("Invalid or expired token")

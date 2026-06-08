@@ -41,4 +41,5 @@ async function LoginUser(req, res) {
         return res.render('login', { error: "Server error" });
     }
 }
+
 module.exports = { showLoginPage, LoginUser };
