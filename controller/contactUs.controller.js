@@ -48,9 +48,9 @@ ${message}
         return res.status(200).send("✅ Email sent successfully");
 
     } catch (error) {
-        console.error("SendMail Error:", error);
+    console.error("SendMail Error:", error);
 
-        return res.status(500).send("❌ Email failed to send");
-    }
+    return res.status(500).send(error.message);
+}
 };
 
