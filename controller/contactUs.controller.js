@@ -34,6 +34,8 @@ transporter.verify((error, success) => {
         console.log("SMTP Server Ready");
     }
 });
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASSWORD exists:", !!process.env.EMAIL_PASSWORD);
 
 // 👉 GET: show contact page
 exports.getContactPage = (req, res) => {
