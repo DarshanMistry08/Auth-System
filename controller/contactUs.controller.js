@@ -6,7 +6,7 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-       user: "mistryydarshan08@gmail.com",
+        user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD          // app password (NOT real password)
     }
 });
@@ -19,17 +19,18 @@ exports.getContactPage = (req, res) => {
 
 
 // 👉 POST: send email
-exports.sendMessage = (req, res) => {
-    const { name, email, phone, subject, type, message } = req.body;
+exports.sendMessage = async (req, res) => {
+    try {
+        const { name, email, phone, subject, type, message } = req.body;
 
-    const mailOptions = {
-from: "mistryydarshan08@gmail.com",
-        to: "mistryydarshan08@gmail.com",
-        replyTo: email,
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_USER,
+            replyTo: email,
 
-        subject: `New Message: ${subject || "No Subject"}`,
+            subject: `New Message: ${subject || "No Subject"}`,
 
-        text: `
+            text: `
 Name: ${name}
 Email: ${email}
 Phone: ${phone || "Not provided"}
@@ -38,16 +39,18 @@ Type: ${type || "General"}
 Message:
 ${message}
         `
-    };
+        };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log(error);
-            return res.send("❌ Email failed to send");
-        } else {
-            console.log("Email sent:", info.response);
-            return res.send("✅ Email sent successfully");
-        }
-    });
+        const info = await transporter.sendMail(mailOptions);
+
+        console.log("Email sent:", info.response);
+
+        return res.status(200).send("✅ Email sent successfully");
+
+    } catch (error) {
+        console.error("SendMail Error:", error);
+
+        return res.status(500).send("❌ Email failed to send");
+    }
 };
 
