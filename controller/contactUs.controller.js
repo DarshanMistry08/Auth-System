@@ -16,26 +16,21 @@ const nodemailer = require('nodemailer');
 //Ai solver version of timeout 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD
-    },
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 10000
-});
-
-transporter.verify((error, success) => {
-    if (error) {
-        console.error("SMTP Verify Error:", error);
-    } else {
-        console.log("SMTP Server Ready");
     }
 });
-console.log("EMAIL_USER:", process.env.EMAIL_USER);
-console.log("EMAIL_PASSWORD exists:", !!process.env.EMAIL_PASSWORD);
+
+transporter.verify((err, success) => {
+    if (err) {
+        console.error("VERIFY ERROR:", err);
+    } else {
+        console.log("SMTP READY");
+    }
+});
 
 // 👉 GET: show contact page
 exports.getContactPage = (req, res) => {
@@ -73,9 +68,12 @@ ${message}
         return res.status(200).send("✅ Email sent successfully");
 
     } catch (error) {
-    console.error("SendMail Error:", error);
+        console.error("SendMail Error:", error);
+        console.error("FULL ERROR:", error);
+        console.error("CODE:", error.code);
+        console.error("COMMAND:", error.command);
 
-    return res.status(500).send(error.message);
-}
+        return res.status(500).send(error.message);
+    }
 };
 
