@@ -17,8 +17,8 @@ async function createUsers(req, res) {
                 });
                 let token = jwt.sign({ email }, process.env.JWT_SECRET);
                 res.cookie('token', token);
-                res.send(createduser);
-                // res.redirect("/create")         //reset form 
+                // res.send(createduser);
+                res.redirect("/login")         //reset form 
             });
         });
     } catch (err) {
